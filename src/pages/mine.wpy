@@ -1,0 +1,11 @@
+<style></style>
+<template>
+  <view>
+    <text>mine</text>
+  </view>
+</template>
+<script>
+  import wepy from 'wepy'
+
+  export default class Mine extends wepy.component {}
+</script>

@@ -1,0 +1,11 @@
+<style></style>
+<template>
+  <view>
+    <text>remind</text>
+  </view>
+</template>
+<script>
+  import wepy from 'wepy'
+
+  export default class Remind extends wepy.component {}
+</script>

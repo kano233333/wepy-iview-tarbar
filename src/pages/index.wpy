@@ -1,0 +1,89 @@
+<style lang="less">
+  .userinfo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .userinfo-avatar {
+    width: 80rpx;
+    height: 80rpx;
+    border-radius: 50%;
+  }
+
+  .userinfo-nickname {
+    color: #aaa;
+  }
+</style>
+<template>
+  <view>
+    <Homepage wx:if="{{current=='homepage'}}"></Homepage>
+    <Group wx:if="{{current=='group'}}"></Group>
+    <remind wx:if="{{current=='remind'}}"></remind>
+    <mine wx:if="{{current=='mine'}}"></mine>
+    <i-tab-bar current="{{ current }}" color="#f759ab" bindchange="handleChange" fixed="true">
+      <i-tab-bar-item wx:for="{{tarList}}" wx:key="index" key="{{item.key}}" icon="{{item.icon}}" current-icon="{{item.currentIcon}}" title="{{item.title}}"></i-tab-bar-item>
+    </i-tab-bar>
+  </view>
+</template>
+
+<script>
+  import wepy from 'wepy'
+  import Homepage from './homepage'
+  import Group from './group'
+  import Remind from './remind'
+  import Mine from './mine'
+
+  export default class Index extends wepy.page {
+    config = {
+      navigationBarTitleText: 'test'
+    }
+    components = {
+      Homepage,
+      Group,
+      Remind,
+      Mine
+    }
+
+    data = {
+      current:"homepage",
+      tarList:[
+        {
+          key:"homepage",
+          icon:"homepage",
+          currentIcon:"homepage_fill",
+          title:"Home"
+        },
+        {
+          key:"group",
+          icon:"group",
+          currentIcon:"group_fill",
+          title:"Group"
+        },
+        {
+          key:"remind",
+          icon:"remind",
+          currentIcon:"remind_fill",
+          title:"Remind"
+        },
+        {
+          key:"mine",
+          icon:"mine",
+          currentIcon:"mine_fill",
+          title:"My"
+        }
+      ]
+    }
+
+    computed = {}
+
+    methods = {
+      handleChange(e){
+        this.current = e.detail.key;
+      }
+    }
+
+    onLoad() {
+    }
+  }
+</script>
